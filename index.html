@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV ATS Generator - Form Data</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Buat CV ATS Friendly</h1>
+            <p>Isi data lengkap. ATS 100% kompatibel.</p>
+        </header>
+
+        <form id="cvForm">
+            <!-- Personal -->
+            <section>
+                <h2>👤 Informasi Pribadi</h2>
+                <!-- Photo Upload -->
+                <div class="photo-upload">
+                    <label>Foto 3x4 (Opsional)</label>
+                    <input type="file" id="photo" accept="image/*">
+                    <div id="photoPreview" class="photo-preview"></div>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="name" placeholder="Nama Lengkap *" required>
+                    <input type="tel" id="phone" placeholder="No. Telepon">
+                </div>
+                <div class="form-row">
+                    <input type="email" id="email" placeholder="Email *" required>
+                    <input type="url" id="website" placeholder="LinkedIn/Portfolio">
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section>
+                <h2>📄 Ringkasan Profil</h2>
+                <p class="hint">3-5 kalimat skill & pengalaman (max 200 kata)</p>
+                <textarea id="summary" class="full-width" rows="6" placeholder="Contoh: Epidemiolog 3+ tahun di Kemenkes, expert data analysis..."></textarea>
+            </section>
+
+            <!-- Work Experience -->
+            <section>
+                <h2>💼 Pengalaman Kerja</h2>
+                <p class="hint">Tambah dari terbaru. Jobdesk bullet points ATS.</p>
+                <div id="workExperiences"></div>
+                <button type="button" id="addWork" class="btn-add">➕ Tambah Pengalaman</button>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2>🎓 Pendidikan</h2>
+                <p class="hint">Dari terbaru: Jurusan, Universitas, Tahun.</p>
+                <div id="educations"></div>
+                <button type="button" id="addEducation" class="btn-add">➕ Tambah Pendidikan</button>
+            </section>
+
+            <!-- Additional -->
+            <section>
+                <h2>⭐ Informasi Tambahan</h2>
+                <div class="form-row">
+                    <textarea id="skills" placeholder="Skills: Python, R, SQL, GIS (pisah koma)"></textarea>
+                    <textarea id="languages" placeholder="Bahasa: Indonesia(Native), English(Fluent)"></textarea>
+                </div>
+                <div class="form-row">
+                    <textarea id="certifications" placeholder="Sertifikasi: Google Data Analytics,..."></textarea>
+                    <textarea id="awards" placeholder="Awards: Juara 1 Lomba Epidemiologi 2024"></textarea>
+                </div>
+            </section>
+
+            <div class="nav-buttons">
+                <button type="button" class="btn-primary" onclick="saveDataAndGo('templates.html')">
+                    🚀 Lanjut Pilih Template
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        window.onload = function() {
+            loadData();
+            initDynamicForms();
+            initPhotoUpload();
+        };
+    </script>
+</body>
+</html>

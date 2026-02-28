@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Template CV</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Pilih Template ATS</h1>
+            <p>Data tersimpan aman. Ukuran A4 (210mm) [web:17].</p>
+        </header>
+
+        <section class="lang-section">
+            <label>Bahasa CV:</label>
+            <select id="language">
+                <option value="ID">🇮🇩 Indonesia</option>
+                <option value="EN">🇺🇸 English</option>
+            </select>
+        </section>
+
+        <section class="template-grid">
+            <div class="template-card selected" data-template="1">
+                <h3>📄 Template 1: Clean Pro</h3>
+                <p>Single column, ATS perfect</p>
+                <div class="template-demo">
+                    <strong>NAMA</strong><br>Phone | Email<br><br>
+                    <strong>RINGKASAN</strong><br>• Point 1<br>• Point 2
+                </div>
+            </div>
+        <!-- Ganti deskripsi Template 2 saja -->
+<div class="template-card" data-template="2">
+    <h3>📸 Template 2: Photo Pro</h3>
+    <p>Foto + Skills setelah summary</p>
+    <div class="template-demo">
+        <div style="display:flex;gap:10px;margin-bottom:10px">
+            <div style="width:30px;height:40px;background:#ddd;"></div>
+            <div><strong>NAMA</strong><br><small>Phone|Email</small></div>
+        </div>
+        <strong>RINGKASAN</strong><br>
+        <small>Skills: Python, R...</small><br><br>
+        <strong>PENGALAMAN</strong><br>• Point 1
+    </div>
+</div>
+
+
+        </section>
+
+        <div class="nav-buttons">
+            <button class="btn-secondary" onclick="goBack('index.html')">← Edit Form</button>
+            <button id="nextPreview" class="btn-primary" onclick="goToPreview()">👁️ Lihat Preview →</button>
+        </div>
+
+        <div id="status"></div>
+    </div>
+
+    <script>
+        let cvData = {}, selectedTemplate = 1;
+
+        window.onload = function() {
+            loadData();
+            initTemplates();
+            updateStatus();
+        };
+
+        function loadData() {
+            const saved = localStorage.getItem('cvData');
+            cvData = saved ? JSON.parse(saved) : {};
+            document.getElementById('language').value = cvData.language || 'ID';
+            if (cvData.template) {
+                document.querySelector(`[data-template="${cvData.template}"]`).classList.add('selected');
+                selectedTemplate = cvData.template;
+            }
+        }
+
+        function initTemplates() {
+            document.querySelectorAll('.template-card').forEach((card, i) => {
+                card.onclick = () => {
+                    document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedTemplate = parseInt(card.dataset.template);
+                    cvData.template = selectedTemplate;
+                    localStorage.setItem('cvData', JSON.stringify(cvData));
+                    document.getElementById('nextPreview').disabled = false;
+                    updateStatus(`Template ${selectedTemplate} ✅`);
+                };
+            });
+            document.getElementById('language').onchange = (e) => {
+                cvData.language = e.target.value;
+                localStorage.setItem('cvData', JSON.stringify(cvData));
+            };
+        }
+
+        function goToPreview() {
+            if (cvData.personal?.name) {
+                localStorage.setItem('cvData', JSON.stringify(cvData));
+                window.location.href = 'preview.html';
+            } else {
+                alert('Isi nama minimal!');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function goBack(page) {
+            window.location.href = page;
+        }
+
+        function updateStatus(msg = '') {
+            document.getElementById('status').innerHTML = 
+                cvData.personal?.name 
+                ? `✅ ${cvData.personal.name} | ${cvData.language} | ${msg}`
+                : '⚠️ Isi form dulu!';
+        }
+    </script>
+</body>
+</html>

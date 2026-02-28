@@ -1,0 +1,361 @@
+/* ==================================================
+   RESET & BASE
+================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f7fa;
+  padding: 20px;
+}
+
+
+/* ==================================================
+   LAYOUT CONTAINER
+================================================== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+header {
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  );
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 30px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+
+/* ==================================================
+   SECTION & TYPOGRAPHY
+================================================== */
+section {
+  padding: 35px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+h2 {
+  color: #2d3748;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.hint {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+
+/* ==================================================
+   FORM
+================================================== */
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+input,
+textarea,
+select {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px;
+  font-size: 16px;
+
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+
+  transition: all 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+
+/* ==================================================
+   BUTTONS
+================================================== */
+button {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+
+  transition: all 0.3s;
+}
+
+/* Primary */
+.btn-primary {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* Secondary */
+.btn-secondary {
+  background: #718096;
+  color: #ffffff;
+}
+
+/* Success */
+.btn-success {
+  background: linear-gradient(135deg, #ed8936, #dd6b20);
+  color: #ffffff;
+}
+
+/* Add Button */
+.btn-add {
+  background: #4299e1;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding: 40px;
+  text-align: center;
+  background: #f8faff;
+}
+
+
+/* ==================================================
+   TEMPLATE SELECTION
+================================================== */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 40px;
+}
+
+.template-card {
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+
+  border: 3px solid #e2e8f0;
+  border-radius: 16px;
+
+  transition: all 0.4s;
+}
+
+.template-card:hover {
+  border-color: #667eea;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.template-card.selected {
+  border-color: #48bb78;
+  background: linear-gradient(135deg, #f0fff4, #f7fee7);
+}
+
+.template-card h3 {
+  color: #2d3748;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.template-demo {
+  margin-top: 15px;
+  min-height: 160px;
+  padding: 25px;
+
+  font-family: monospace;
+  font-size: 13px;
+
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+}
+
+
+/* ==================================================
+   CV PREVIEW
+================================================== */
+.cv-preview {
+  background: #ffffff;
+  padding: 40px;
+  font-size: 11pt;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ==================================================
+   DYNAMIC ITEM
+================================================== */
+.dynamic-item {
+  padding: 25px;
+  margin-bottom: 20px;
+
+  background: #f8faff;
+  border: 2px dashed #bee3f8;
+  border-radius: 12px;
+}
+
+
+/* ==================================================
+   STATUS
+================================================== */
+#status {
+  padding: 25px;
+  text-align: center;
+  font-weight: 500;
+
+  background: #f0fff4;
+  border-top: 3px solid #9ae6b4;
+  color: #22543d;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==================================================
+   PHOTO UPLOAD
+================================================== */
+.photo-upload {
+    margin-bottom: 20px;
+}
+
+.photo-upload label {
+    display: block;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+#photo {
+    margin-bottom: 10px;
+}
+
+.photo-preview {
+    text-align: center;
+}
+
+.photo-preview-img {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ==================================================
+   DYNAMIC ITEMS (Sudah ada, tambah spacing)
+================================================== */
+.dynamic-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafbfc;
+}
+
+.dynamic-item input,
+.dynamic-item textarea {
+    margin-bottom: 12px;
+    min-width: 100%;
+}
+
+/* ==================================================
+   FULL WIDTH TEXTAREA (Summary)
+================================================== */
+.full-width {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    min-height: 140px;
+}
+
+#summary {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    resize: vertical; /* Bisa di-drag vertikal saja */
+}
+
+/* Perbaiki form-row supaya responsive */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    input,
+    textarea,
+    select {
+        min-width: 100% !important;
+    }
+}
+

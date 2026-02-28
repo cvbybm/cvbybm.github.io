@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview CV ATS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Preview CV ATS</h1>
+            <p>A4 - ATS Ready</p>
+        </header>
+
+        <div id="cvPreview" class="cv-preview" style="width:210mm;max-width:100%;margin:0 auto;">
+            Loading...
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="goBack('templates.html')" class="btn-secondary">← Ganti Template</button>
+            <button id="exportBtn" onclick="exportCV()" class="btn-primary">1 .📄 Export Ke PDF</button>
+            <button onclick="whatsappPayment()" class="btn-success">2. 💰 WhatsApp Untuk Bayar </button>
+        </div>
+    </div>  
+
+    <script src="js/templates.js"></script>
+    <script src="js/utils.js"></script>
+    <script>
+        window.onload = () => {
+            const saved = localStorage.getItem('cvData');
+            if (saved) {
+                window.cvData = JSON.parse(saved);
+                generatePreview();
+            } else {
+                document.getElementById('cvPreview').innerHTML = 'No data!';
+            }
+        };
+        function goBack(page) { window.location.href = page; }
+    </script>
+</body>
+</html>
